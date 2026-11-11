@@ -4,7 +4,7 @@
 
 <h1 align="center">⚔️ DeepSeek Harness サイバーセキュリティ レッドチームツール (dsh-purge-safe)</h1>
 
-<p align="center"><strong>バージョン 0.1.0</strong></p>
+<p align="center"><strong>バージョン 0.1.1</strong></p>
 
 <p align="center">
   <em>DeepSeek Harness のジェイルブレイク: すべてのモデルに対応し、モデルごとにプロンプトを切り替え。デフォルトプロンプトは 鸢码 用。ぜひ Star ⭐ を。これをベースに開発する場合は「要帰属表示」をご覧ください。</em>
@@ -14,7 +14,7 @@
   <a href="https://github.com/CallMeGuLab/dsh-purge-safe/stargazers"><img src="https://img.shields.io/github/stars/CallMeGuLab/dsh-purge-safe?logo=github&label=Stars" alt="GitHub stars"></a>
   <a href="https://github.com/CallMeGuLab/dsh-purge-safe/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue?style=flat" alt="Apache-2.0"></a>
   <a href="https://github.com/CallMeGuLab/dsh-purge-safe/releases"><img src="https://img.shields.io/github/v/release/CallMeGuLab/dsh-purge-safe?label=release" alt="Release"></a>
-  <a href="https://www.deepseek.com/harness/"><img src="https://img.shields.io/badge/dsh-0.2.0--rc.2%20%2F%200.2.1--rc.2-blue" alt="DSH"></a>
+  <a href="https://www.deepseek.com/harness/"><img src="https://img.shields.io/badge/dsh-0.2.1--rc.5%20%2F%200.2.2--rc.1-blue" alt="DSH"></a>
   <br>
   <img src="https://img.shields.io/badge/Node.js-%3E%3D18-339933?logo=node.js&logoColor=fff" alt="Node.js">
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" alt="JavaScript">
@@ -41,7 +41,7 @@
 
 ## これは何か
 
-**dsh-purge-safe** は、お使いのマシンにすでにインストールされている公式 [DeepSeek Harness](https://www.deepseek.com/harness/) 向けのサイバーセキュリティ レッドチームプラグインです。**0.1.0** は **DSH 0.2.1-rc.5** を対象とします（rc.2 も動作します）。 公式 **Web**（`dsh web`）と公式 **デスクトップ EXE** の両方に対応します。インストールと Apply はそれぞれ別々に行います。
+**dsh-purge-safe** は、お使いのマシンにすでにインストールされている公式 [DeepSeek Harness](https://www.deepseek.com/harness/) 向けのサイバーセキュリティ レッドチームプラグインです。**0.1.1** は **DSH 0.2.2-rc.1** を対象とします（0.2.1-rc.5 / 0.2.1-rc.2 も動作します）。 公式 **Web**（`dsh web`）と公式 **デスクトップ EXE** の両方に対応します。インストールと Apply はそれぞれ別々に行います。
 
 Harness は単にプロンプトを転送するだけではありません。プロンプトの書き換え、承認ゲート、サンドボックスポリシー、セッション移行を実行時に行います。「モデルは答えるか」だけを問うと、ホスト層のブロックをモデルの拒否と取り違えてしまいます。このプラグインは、あなた自身のインストール環境でこの 2 つの層を分離し、制御された評価や、どのデフォルトポリシーが過度に厳しいかを確認するために使います。
 
@@ -114,11 +114,11 @@ Harness は単にプロンプトを転送するだけではありません。プ
 
 ## 対応ホスト
 
-**0.1.0 は DSH 0.2.1-rc.5 を対象とします。** 0.2.1-rc.2 も動作します。
+**0.1.1 は DSH 0.2.2-rc.1 を対象とします。** 0.2.1-rc.5 と 0.2.1-rc.2 も動作します。
 
-- **dsh 0.2.1-rc.5**（公式デスクトップ / 公式 `dsh web`）: 推奨。`{{cwd}}` / `[cwd]` クラッシュ、patch #40 のマッチ、削除された `toolFilter`、ホスト `dsh-tools` の解決、hostFs の fd、デスクトップヘルパーの自己終了、`file:` アーカイブ更新、Ctrl+Enter ステアを修正。
-- **dsh 0.2.1-rc.2**: 対応。
-- **dsh 0.2.1-rc.3 / rc.4 以降は非対応です。** マッチしないパッチは pending または skipped のままで、盲目的な書き換えはしません。**0.2.1-rc.5** または **0.2.1-rc.2** を使用してください。
+- **dsh 0.2.2-rc.1**（公式デスクトップ / 公式 `dsh web`）: 推奨。0.2.2 でコードが移動しました（`dsh-tool-executor-ptc`、`dsh-tools/lib/pipeline.js`、`dsh-deliverable-file-references`）。本リリースは patch #14 #17 #40 #54 #60 #62 #67 #74 #76 #82 を新しい配置に合わせ、旧配置を legacy として登録します（誤った "drifted" は出ません）。
+- **dsh 0.2.1-rc.5 / 0.2.1-rc.2**: 対応。旧配置向けの pattern はすべて保持しています。
+- **dsh 0.2.1-rc.3 / rc.4 は非対応です。** マッチしないパッチは pending または skipped のままで、盲目的な書き換えはしません。
 
 マッチしないパッチは pending または skipped のままで、盲目的な書き換えはしません。
 
@@ -190,7 +190,7 @@ node node_modules/dsh-purge-safe/scripts/ensure-profile-bundle.mjs
 - デスクトップクライアントではボタンをクリックすることもできます（`dsh://` ディープリンク。同じ tarball をダウンロードします）。
 
 <p align="center">
-  <a href="dsh://plugin/install?id=dsh-purge-safe&name=dsh-purge-safe&version=0.1.0&repo=CallMeGuLab%2Fdsh-purge-safe&permissions=%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%B3%A8%E5%85%A5%2C%E6%9C%AC%E6%9C%BA%E8%A1%A5%E4%B8%81%2C%E8%AE%BE%E7%BD%AE%E9%A1%B5&downloadUrl=https%3A%2F%2Fcodeload.github.com%2FCallMeGuLab%2Fdsh-purge-safe%2Ftar.gz%2Frefs%2Fheads%2Fmain"><strong>デスクトップクライアントでインストール</strong></a>
+  <a href="dsh://plugin/install?id=dsh-purge-safe&name=dsh-purge-safe&version=0.1.1&repo=CallMeGuLab%2Fdsh-purge-safe&permissions=%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%B3%A8%E5%85%A5%2C%E6%9C%AC%E6%9C%BA%E8%A1%A5%E4%B8%81%2C%E8%AE%BE%E7%BD%AE%E9%A1%B5&downloadUrl=https%3A%2F%2Fcodeload.github.com%2FCallMeGuLab%2Fdsh-purge-safe%2Ftar.gz%2Frefs%2Fheads%2Fmain"><strong>デスクトップクライアントでインストール</strong></a>
 </p>
 
 **ステップ 3 — ホストを再起動する。** プラグインをプロファイルに追加しただけでは、`@deepseek-ai` にパッチは当たりません。インストールしたホストを完全に終了して再起動します（Web: `dsh web` を停止して起動し直す。デスクトップ: トレイアイコンも終了してから exe を開く）。

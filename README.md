@@ -4,7 +4,7 @@
 
 <h1 align="center">⚔️ DeepSeek Harness cybersecurity red-team tool (dsh-purge-safe)</h1>
 
-<p align="center"><strong>Version 0.1.0</strong></p>
+<p align="center"><strong>Version 0.1.1</strong></p>
 
 <p align="center">
   <em>DeepSeek Harness jailbreak: every model, swap prompts per model. Default prompt for 鸢码. Please star ⭐ If you build on this, see Attribution required.</em>
@@ -14,7 +14,7 @@
   <a href="https://github.com/CallMeGuLab/dsh-purge-safe/stargazers"><img src="https://img.shields.io/github/stars/CallMeGuLab/dsh-purge-safe?logo=github&label=Stars" alt="GitHub stars"></a>
   <a href="https://github.com/CallMeGuLab/dsh-purge-safe/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue?style=flat" alt="Apache-2.0"></a>
   <a href="https://github.com/CallMeGuLab/dsh-purge-safe/releases"><img src="https://img.shields.io/github/v/release/CallMeGuLab/dsh-purge-safe?label=release" alt="Release"></a>
-  <a href="https://www.deepseek.com/harness/"><img src="https://img.shields.io/badge/dsh-0.2.0--rc.2%20%2F%200.2.1--rc.2-blue" alt="DSH"></a>
+  <a href="https://www.deepseek.com/harness/"><img src="https://img.shields.io/badge/dsh-0.2.1--rc.5%20%2F%200.2.2--rc.1-blue" alt="DSH"></a>
   <br>
   <img src="https://img.shields.io/badge/Node.js-%3E%3D18-339933?logo=node.js&logoColor=fff" alt="Node.js">
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" alt="JavaScript">
@@ -41,7 +41,7 @@
 
 ## What this is
 
-**dsh-purge-safe** is a cybersecurity red-team plugin for the official [DeepSeek Harness](https://www.deepseek.com/harness/) already installed on your machine. **0.1.0** targets **DSH 0.2.1-rc.5** (rc.2 still works). Official **Web** (`dsh web`) and the official **desktop EXE** are both supported. Install and Apply them separately.
+**dsh-purge-safe** is a cybersecurity red-team plugin for the official [DeepSeek Harness](https://www.deepseek.com/harness/) already installed on your machine. **0.1.1** targets **DSH 0.2.2-rc.1** (0.2.1-rc.5 / 0.2.1-rc.2 still work). Official **Web** (`dsh web`) and the official **desktop EXE** are both supported. Install and Apply them separately.
 
 Harness does more than forward a prompt. It rewrites prompts, approval gates, sandbox policy, and session migration at runtime. Asking only “will the model answer” treats a host-layer block as a model refusal. This plugin separates those two layers on your own install, for controlled evaluation and for seeing which default policy is too tight.
 
@@ -114,11 +114,11 @@ This repo is [Apache License 2.0](./LICENSE). Forks and redistributions must kee
 
 ## Supported hosts
 
-**0.1.0 targets DSH 0.2.1-rc.5.** 0.2.1-rc.2 still works.
+**0.1.1 targets DSH 0.2.2-rc.1.** 0.2.1-rc.5 and 0.2.1-rc.2 still work.
 
-- **dsh 0.2.1-rc.5** (official desktop / official `dsh web`): recommended. Fixes `{{cwd}}` / `[cwd]` crash, patch #40 match, dropped `toolFilter`, host `dsh-tools` resolve, hostFs fd, desktop helper self-kill, `file:` archive update, Ctrl+Enter steer.
-- **dsh 0.2.1-rc.2**: supported.
-- **dsh 0.2.1-rc.3 / rc.4 and newer are not supported.** Unmatched patches stay pending or skipped; nothing is rewritten blindly. Use **0.2.1-rc.5** or **0.2.1-rc.2** instead.
+- **dsh 0.2.2-rc.1** (official desktop / official `dsh web`): recommended. 0.2.2 moved code around (`dsh-tool-executor-ptc`, `dsh-tools/lib/pipeline.js`, `dsh-deliverable-file-references`); this release repoints patches #14 #17 #40 #54 #60 #62 #67 #74 #76 #82 at their new homes and registers the old locations as legacy (no more false "drifted").
+- **dsh 0.2.1-rc.5 / 0.2.1-rc.2**: supported; every old-location pattern is kept.
+- **dsh 0.2.1-rc.3 / rc.4 are not supported.** Unmatched patches stay pending or skipped; nothing is rewritten blindly.
 
 Unmatched patches stay pending or skipped; nothing is rewritten blindly.
 
@@ -190,7 +190,7 @@ node node_modules/dsh-purge-safe/scripts/ensure-profile-bundle.mjs
 - On the desktop client you can also click the button (`dsh://` deep link; it still downloads the same tarball).
 
 <p align="center">
-  <a href="dsh://plugin/install?id=dsh-purge-safe&name=dsh-purge-safe&version=0.1.0&repo=CallMeGuLab%2Fdsh-purge-safe&permissions=%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%B3%A8%E5%85%A5%2C%E6%9C%AC%E6%9C%BA%E8%A1%A5%E4%B8%81%2C%E8%AE%BE%E7%BD%AE%E9%A1%B5&downloadUrl=https%3A%2F%2Fcodeload.github.com%2FCallMeGuLab%2Fdsh-purge-safe%2Ftar.gz%2Frefs%2Fheads%2Fmain"><strong>Install in desktop client</strong></a>
+  <a href="dsh://plugin/install?id=dsh-purge-safe&name=dsh-purge-safe&version=0.1.1&repo=CallMeGuLab%2Fdsh-purge-safe&permissions=%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%B3%A8%E5%85%A5%2C%E6%9C%AC%E6%9C%BA%E8%A1%A5%E4%B8%81%2C%E8%AE%BE%E7%BD%AE%E9%A1%B5&downloadUrl=https%3A%2F%2Fcodeload.github.com%2FCallMeGuLab%2Fdsh-purge-safe%2Ftar.gz%2Frefs%2Fheads%2Fmain"><strong>Install in desktop client</strong></a>
 </p>
 
 **Step 3 — Restart the host.** Adding the plugin to a profile does **not** patch `@deepseek-ai` by itself. Fully quit and reopen the host you just installed into (Web: stop `dsh web` and start again; Desktop: quit the tray icon too, then open the exe).

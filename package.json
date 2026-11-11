@@ -1,6 +1,6 @@
 {
   "name": "dsh-purge-safe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DeepSeek Harness 破甲：让所有模型都能破甲，不同模型可换不同提示词；默认提示词面向国模「鸢码」。破解市面上收费 388u 的版本，免费公开。Jailbreak for every model — swap prompts per model. 求 Star 收藏 ⭐",
   "author": "CallMeGuLab",
   "type": "module",
@@ -94,8 +94,9 @@
   "engines": {
     "node": ">=18"
   },
-  "dshTarget": "0.2.1-rc.5",
+  "dshTarget": "0.2.2-rc.1",
   "dshTargets": [
+    "0.2.2-rc.1",
     "0.2.1-rc.5",
     "0.2.1-rc.2"
   ]
